@@ -1,3 +1,4 @@
+
 #1. Escribir un programa que permita procesar datos de pasajeros de viaje en una lista de tuplas con la siguiente
 #forma: (nombre, dni, destino). Por ejemplo:
 #*(‘Manuel Juarez’, 12345678, ‘San Juan’), (‘Silvana Paredes’, 62258472, ‘Mendoza’)+
@@ -16,6 +17,7 @@ lista_pasajeros = []
 lista_ciudades = []
 
 while True:
+    print("\nMenú:")
     print("Ingrese 1 para agregar pasajeros a la lista")
     print("Ingrese 2 para agregar ciudades a la lista")
     print("Ingrese 3 para ingresar el dni de la persona para ver a que ciudad viaja")
@@ -30,12 +32,12 @@ while True:
         name = str(input("Ingrese el nombre de la persona: "))
         dni = int(input("Ingrese el DNI de la persona: "))
         destino = str(input("Ingrese el destino del pasajero: "))
-        lista_pasajeros.append(name, dni, destino)
+        lista_pasajeros.append((name, dni, destino))
         
     elif option == 2:
         ciudad = str(input("Agrege ciudades: "))
         pais = str(input("Ingrese el pais de la ciudad: "))
-        lista_ciudades.append(ciudad, pais)
+        lista_ciudades.append((ciudad, pais))
 
     elif option == 3:
         dni = int(input("Ingrese el DNI del pasajero: "))
@@ -62,14 +64,14 @@ while True:
     elif option == 5:
         dni = int(input("Ingrese el DNI de la persona para ver a que pais viaja: "))
         found = False
-        for pasajero in lista_ciudades:
+        for pasajero in lista_pasajeros:
             if pasajero[1] == dni:
                 destiny_pais = pasajero[2]
                 found = True
                 break
         if (found):
-            for city, pais in lista_ciudades:
-                if city == destiny_city:
+            for ciudad, pais in lista_ciudades:
+                if ciudad == destiny_city:
                     print(f"El pasajero va a viajar a {pais}")
                     break
     
@@ -94,4 +96,13 @@ while True:
         print("Ingrese una opcion valida: ")
 
 
+#2. Suponer una lista con datos de las compras hechas por clientes de una empresa a lo largo de un mes, la cual
+#contiene tuplas con información de cada venta: (cliente, día del mes, monto, domicilio del cliente). Ejemplo:
+#*(‘Nuria Costa’, 5, 1234.5,’Calle 1 – 456’), (‘Jorge Russo’, 7, 3999, ‘Calle 2 – 741’)+
+#Escribir una función que reciba como parámetro una lista con el formato mencionado anteriormente y
+#retorne los domicilios de cada cliente al cual se le debe enviar una factura de compra. Notar que cada cliente
+#puede haber hecho más de una compra en el mes, por lo que la función debe retornar una estructura que
+#contenga cada domicilio una sola vez.
 
+lista_compras =[("Santiago Bazan", 19, 10.500, "Carrillo 3090"), ("Jorge Garcia", 2, 18.573, "Lemos 59"), ("Mariela Gonzales", 15, 18.574, "En su casa")]
+lista_home = funciones.home(buy_list)
